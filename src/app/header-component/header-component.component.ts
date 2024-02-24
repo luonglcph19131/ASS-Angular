@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IMenu } from '../interface/Menu';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-component',
@@ -12,35 +13,41 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponentComponent {
   menus: IMenu[] = [{
     id: 1,
-    name: "Trang chu",
+    name: "Quần áo nam",
     url: "trang-chu",
     parent: 0
   },
   {
     id: 2,
-    name: "Gioi thieu",
+    name: "Quần áo nữ",
     url: "trang-chu",
     parent: 0
   },
   {
     id: 3,
-    name: "Tin tuc",
+    name: "Giày thể thao",
     url: "trang-chu",
     parent: 0
   },
   {
     id: 4,
-    name: "Tin noi bo",
+    name: "Giày nam",
     url: "trang-chu",
     parent: 3
   },
   {
     id: 3,
-    name: "Tin xa hoi",
+    name: "Giày nữ",
     url: "trang-chu",
     parent: 3
   },
 ];
+router = inject(Router)
+logout(){
+  // console.log('logged out');
+  localStorage.removeItem('login');   
+  this.router.navigate(['login']);
+}
 
 checkChildrent(menuId: number){
   let check = false;

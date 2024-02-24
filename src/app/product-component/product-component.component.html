@@ -1,16 +1,16 @@
-<div class="row">
+
+<div class="row" style="margin: 20px ;">
     <div *ngFor = "let product of products" class="name col-6 col-sm-4 col-md-6 col-lg-3 col-xl-2">
-    <div class="card " >
-      <img src="{{product.thumbnail}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text">{{product.price}}</p>
-        <button class="sales" *ngIf="product.sales; else notsale">Mua với mã giảm giá</button>
-        <ng-template #notsale>
-                    <button>Mua ngay</button>
-        </ng-template>
+      <div class="card " style="   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); [bóng hộp: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);] x
+      ">
+        <img src="{{product.image}}" class="card-img-top" alt="..." style="">
+        <div class="card-body">
+          <p class="card-title" style=" font-size: 20px;">{{product.name}}</p> 
+          <h4 class="card-text">$: {{product.price}}</h4>
+          <p class="card-title">{{product.detail}}</p>
+          <a class="btn btn-danger" (click)="addToCart(product.id,product.name,product.image,product.price)" href="http://localhost:4200/cart ">Add to cart</a>        </div>
       </div>
-    </div>
+
     </div>
     
 </div>

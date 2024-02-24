@@ -14,14 +14,16 @@ import { Router } from '@angular/router';
 export class LoginComponentComponent {
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.email])
   })
   mess = ''
   router = inject(Router)
   onSubmit(){
     let u = this.loginForm.controls.username.value;
     let p = this.loginForm.controls.password.value;
-    if( (u== 'admin') && (p == '123456')){
+    let e = this.loginForm.controls.email.value;
+    if( (u== 'admin') && (p == '123456') && (e == 'luonglcph19131@fpt.edu.vn')){
       this.mess = "Dang nhap thanh cong"
       localStorage.setItem('login','ok');
       this.router.navigate(['dashboard'])

@@ -1,0 +1,8 @@
+<div class="container">
+    <form  [formGroup] = "categoryForm" (ngSubmit) = "onSubmit()">
+        <input type="text" placeholder="Danh muc san pham" formControlName="category" class="form-control">
+        {{mess}}
+        <button type="submit" class="btn btn-primary">Thêm</button>
+          
+    </form>
+</div>

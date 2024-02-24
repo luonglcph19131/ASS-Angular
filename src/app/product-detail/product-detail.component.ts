@@ -21,7 +21,7 @@ export class ProductDetailComponent {
     this.getDetailProductId(Number(id))
   }
   getDetailProductId(id: number){
-    this.httpClient.get(`https://dummyjson.com/products/${id}`).subscribe((response:any) => {
+    this.httpClient.get(`http://localhost:3000/product/${id}`).subscribe((response:any) => {
       // console.log(response);
       this.product = response;
     });

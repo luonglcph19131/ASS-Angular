@@ -1,26 +1,8 @@
 <style src="dashboard.component.css"></style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Quản Trị Sản Phẩm</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sản Phẩm</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Danh Mục</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Đơn Hàng</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 
 <div class="container">
-
+    <router-outlet></router-outlet>
+    
     <div class="product-table">
         <h2>Danh Sách Sản Phẩm</h2>
         <table class="table table-striped">
@@ -28,17 +10,32 @@
                 <tr>
                     <th>ID</th>
                     <th>Tên Sản Phẩm</th>
+                    <th>Danh mục</th>
                     <th>Giá</th>
-                    <th>Số Lượng</th>
-                    <th>Thao Tác</th>
+                    <th>Ảnh</th>
+                    <th>Mô tả</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
-
+                    @for (product of products; track products.id){
+                        <tr>
+                            <td></td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.cate_id}}</td>
+                            <td>{{product.price}}</td>
+                            <td><img src="{{product.image}}" width="80"/></td>
+                            <td>{{product.detail}}</td>
+                            <td><a href="/dashboard/edit-product/{{product.id}}" class="btn btn-primary">Sửa</a> | <a class="btn btn-danger" (click)="handleDelProduct(product.id)">Xóa</a></td>
+                        </tr>
+                    }
+              
             </tbody>
         </table>
     </div>
     <div class="product-form">
-        <h2>Thêm/Sửa Sản Phẩm</h2>
+        <h2>Thêm Sản Phẩm</h2>
+        <a href="/dashboard/add-product" class="btn btn-primary" style="margin-bottom: 20px;">Thêm sản phẩm mới</a>
+
     </div>
 </div>

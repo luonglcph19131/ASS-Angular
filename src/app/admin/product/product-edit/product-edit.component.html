@@ -1,0 +1,46 @@
+<div class="container">
+    <form  [formGroup] = "productForm" (ngSubmit) = "onSubmit()"  style="margin: 20px 0;">
+        <h2 style="margin : 20px; text-align: center ;">Cập nhật sản phẩm</h2>
+        <div class="mb-3">
+            <label for="" class="form-lable" style="font-size: 20px; margin-bottom: 10px; "><strong>Tên sản phẩm</strong></label>
+            <input type="text" placeholder="Tên sản phẩm" formControlName="name" class="form-control">
+            <div *ngIf = "!productForm.controls.name?.valid&&(productForm.controls.name?.dirty||productForm.controls.name?.touched)">
+                <p>Ten dang nhap khong de trong</p>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-lable" style="font-size: 20px; margin-bottom: 10px;"><strong>Danh mục sản phẩm</strong></label>
+            <select class="form-control" formControlName="cate_id">
+                @for(cat of category; track category.id){
+                    <option value="{{cat.id}}">{{cat.category}}</option>
+                }
+            
+            </select>
+            <div *ngIf = "!productForm.controls.cate_id?.valid&&(productForm.controls.cate_id.dirty||productForm.controls.cate_id.touched)">
+                <p>Danh muc khong de trong</p>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-lable" style="font-size: 20px; margin-bottom: 10px;"><strong>Giá sản phẩm</strong></label>
+            <input type="number" placeholder="Giá sản phẩm" formControlName="price" class="form-control">
+            <div *ngIf = "!productForm.controls.price?.valid&&(productForm.controls.price.dirty||productForm.controls.price.touched)">
+                <p>Gia khong de trong</p>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-lable" style="font-size: 20px; margin-bottom: 10px;"><strong>Ảnh sản phẩm</strong></label>
+            <input type="text" placeholder="Ảnh sản phẩm" formControlName="image" class="form-control">
+            <div *ngIf = "!productForm.controls.image?.valid&&(productForm.controls.image.dirty||productForm.controls.image.touched)">
+                <p>Anh khong de trong</p>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-lable" style="font-size: 20px; margin-bottom: 10px;"><strong>Mô tả sản phẩm</strong></label>
+            <input formControlName="detail" class="form-control" placeholder="Mô tả">
+        </div>
+        <pre>{{mess}}</pre>
+        <div>
+            <button type="submit" class="btn btn-primary">Cap nhat sản phẩm</button>
+        </div>
+    </form>
+</div>
